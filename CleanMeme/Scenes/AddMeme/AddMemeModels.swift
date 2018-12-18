@@ -14,8 +14,13 @@ enum AddMeme {
         var memeUrl: String
         var memeImage: UIImage
     }
-
     struct Request {
         var memeFormFields: MemeFormFields
+    }
+    struct Response {
+        var meme: Meme?
+    }
+    struct ViewModel {
+        var meme: Meme?
     }
 }

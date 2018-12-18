@@ -9,9 +9,14 @@
 import UIKit
 
 protocol AddMemePresentationLogic {
-
+    func presentAddedMeme(response: AddMeme.Response)
 }
 
 class AddMemePresenter: AddMemePresentationLogic {
     weak var viewController: AddMemeDisplayLogic?
+
+    func presentAddedMeme(response: AddMeme.Response) {
+        let viewModel = AddMeme.ViewModel(meme: response.meme)
+        viewController?.displayAddedMeme(viewModel: viewModel)
+    }
 }

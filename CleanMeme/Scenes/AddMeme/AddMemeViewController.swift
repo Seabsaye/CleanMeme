@@ -9,11 +9,11 @@
 import UIKit
 
 protocol AddMemeDisplayLogic: class {
-
+    func displayAddedMeme(viewModel: AddMeme.ViewModel)
 }
 
 class AddMemeViewController: UIViewController {
-    var interactor: AddMemeInteractor?
+    var interactor: AddMemeBusinessLogic?
     var router: (NSObjectProtocol & AddMemeRoutingLogic & AddMemeDataPassing)?
 
     var imagePickerController: UIImagePickerController!
@@ -80,11 +80,27 @@ class AddMemeViewController: UIViewController {
         let request = AddMeme.Request(memeFormFields: AddMeme.MemeFormFields(memeName: memeName, memeUrl: memeUrl, memeImage: memeImage))
         interactor?.addMeme(request: request)
     }
+
+    // MARK: Error handling
+
+    private func showOrderFailureAlert(title: String, message: String)
+    {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        showDetailViewController(alertController, sender: nil)
+    }
 }
 
 // MARK: AddMemeDisplayLogic
 extension AddMemeViewController: AddMemeDisplayLogic {
-
+    func displayAddedMeme(viewModel: AddMeme.ViewModel) {
+        if viewModel.meme != nil {
+            // routing logic
+        } else {
+            showOrderFailureAlert(title: "Failed to add meme", message: "Please correct your meme and submit again.")
+        }
+    }
 }
 
 // MARK: UIImagePickerControllerDelegate

@@ -100,5 +100,7 @@ class ListMemesViewController: UITableViewController, ListMemesDisplayLogic {
         return cell
     }
 
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowMeme", sender: indexPath.row)
+    }
 }

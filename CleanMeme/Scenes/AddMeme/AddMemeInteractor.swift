@@ -27,10 +27,11 @@ class AddMemeInteractor: AddMemeBusinessLogic, AddMemeDataStore {
         let memeFormFields = request.memeFormFields
         // convert data models
         let memeToAdd = Meme(id: nil, name: memeFormFields.memeName, url: memeFormFields.memeUrl, image: memeFormFields.memeImage)
-        memesWorker.addMeme(memeToAdd: memeToAdd) { meme in
-            self.memeToEdit = meme
+        memesWorker.addMeme(memeToAdd: memeToAdd) { [weak self] meme in
+            guard let weakSelf = self else { return }
+            weakSelf.memeToEdit = meme
             let response = AddMeme.Response(meme: meme)
-            self.presenter?.presentAddedMeme(response: response)
+            weakSelf.presenter?.presentAddedMeme(response: response)
         }
     }
 }

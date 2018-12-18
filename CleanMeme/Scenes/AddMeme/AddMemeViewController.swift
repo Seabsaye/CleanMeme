@@ -96,7 +96,7 @@ class AddMemeViewController: UIViewController {
 extension AddMemeViewController: AddMemeDisplayLogic {
     func displayAddedMeme(viewModel: AddMeme.ViewModel) {
         if viewModel.meme != nil {
-            // routing logic
+            router?.routeToListMemes(segue: nil)
         } else {
             showOrderFailureAlert(title: "Failed to add meme", message: "Please correct your meme and submit again.")
         }

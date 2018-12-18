@@ -16,6 +16,7 @@ class AddMemePresenter: AddMemePresentationLogic {
     weak var viewController: AddMemeDisplayLogic?
 
     func presentAddedMeme(response: AddMeme.Response) {
+        // format data to simple information that is easy to display
         let viewModel = AddMeme.ViewModel(meme: response.meme)
         viewController?.displayAddedMeme(viewModel: viewModel)
     }

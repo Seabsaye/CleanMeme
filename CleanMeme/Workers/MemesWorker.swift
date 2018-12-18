@@ -10,6 +10,7 @@ import Foundation
 
 protocol MemesStoreProtocol {
     func addMeme(memeToAdd: Meme, completionHandler: @escaping MemesStoreAddMemeCompletionHandler)
+    func fetchMemes(completionHandler: @escaping MemesStoreFetchMemesCompletionHandler)
 }
 
 protocol MemesStoreUtilityProtocol {}
@@ -32,19 +33,33 @@ class MemesWorker {
         memesStore.addMeme(memeToAdd: memeToAdd) { result in
             switch result {
             case .Success(result: let meme):
-                completionHandler(meme)
+                DispatchQueue.main.async { completionHandler(meme) }
             case .Failure(error: let error):
                 // outputting a technical log is scoped by the Worker
                 // displaying a corresponding readable message to a user is owned by the View Controller
                 print(error)
-                completionHandler(nil)
+                DispatchQueue.main.async { completionHandler(nil) }
+            }
+        }
+    }
+
+    func fetchMemes(completionHandler: @escaping MemesWorkerFetchMemeCompletionHandler) {
+        memesStore.fetchMemes { result in
+            switch result {
+            case .Success(result: let memes):
+                DispatchQueue.main.async { completionHandler(memes) }
+            case .Failure(error: let error):
+                // outputting a technical log is scoped by the Worker
+                // displaying a corresponding readable message to a user is owned by the View Controller
+                print(error)
+                DispatchQueue.main.async { completionHandler([]) }
             }
         }
     }
 }
 
-typealias MemesStoreAddMemeCompletionHandler = (MemesStoreResult<Meme>) -> ()
 typealias MemesWorkerAddMemeCompletionHandler = (Meme?) -> ()
+typealias MemesWorkerFetchMemeCompletionHandler = ([Meme]) -> ()
 
 enum MemesStoreResult<U> {
     case Success(result: U)

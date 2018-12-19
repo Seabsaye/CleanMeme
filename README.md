@@ -1,1 +1,2 @@
-# Clean-Swift-Demo-App
+# CleanMeme
+## Clean Swift Architecture Sample Application

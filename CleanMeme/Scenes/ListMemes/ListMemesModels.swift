@@ -10,7 +10,6 @@ import UIKit
 
 enum ListMemes {
     // Mark: Use cases
-
     enum FetchMemes {
         struct Request {}
         struct Response {

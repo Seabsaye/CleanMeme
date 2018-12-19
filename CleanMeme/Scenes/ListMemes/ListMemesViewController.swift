@@ -12,7 +12,7 @@ protocol ListMemesDisplayLogic: class {
     func displayFetchedMemes(viewModel: ListMemes.FetchMemes.ViewModel)
 }
 
-class ListMemesViewController: UITableViewController, ListMemesDisplayLogic {
+class ListMemesViewController: UITableViewController {
     var interactor: ListMemesBusinessLogic?
     var router: (NSObjectProtocol & ListMemesRoutingLogic & ListMemesDataPassing)?
     var displayedMemes: [ListMemes.FetchMemes.ViewModel.DisplayedMeme] = []
@@ -36,6 +36,7 @@ class ListMemesViewController: UITableViewController, ListMemesDisplayLogic {
         let interactor = ListMemesInteractor()
         let presenter = ListMemesPresenter()
         let router = ListMemesRouter()
+        
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -55,7 +56,7 @@ class ListMemesViewController: UITableViewController, ListMemesDisplayLogic {
         }
     }
 
-    // MARK: - View lifecycle
+    // MARK: View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,19 +68,14 @@ class ListMemesViewController: UITableViewController, ListMemesDisplayLogic {
         fetchMemes()
     }
 
-    // MARK: - Fetch Memes
+    // MARK: Fetch Memes
 
     func fetchMemes() {
         let request = ListMemes.FetchMemes.Request()
         interactor?.fetchMemes(request: request)
     }
 
-    func displayFetchedMemes(viewModel: ListMemes.FetchMemes.ViewModel) {
-        displayedMemes = viewModel.displayedMemes
-        tableView.reloadData()
-    }
-
-    // MARK: - Table view data source
+    // MARK: Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -93,8 +89,8 @@ class ListMemesViewController: UITableViewController, ListMemesDisplayLogic {
         let displayedMeme = displayedMemes[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as? MemeTableViewCell else { return MemeTableViewCell() }
 
-        cell.memeTitle.text = displayedMeme.name
-        cell.memeUrl.text = displayedMeme.url
+        cell.memeTitleLabel.text = displayedMeme.name
+        cell.memeUrlLabel.text = displayedMeme.url
         cell.memeImageView.image = displayedMeme.image
 
         return cell
@@ -102,5 +98,13 @@ class ListMemesViewController: UITableViewController, ListMemesDisplayLogic {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "ShowMeme", sender: indexPath.row)
+    }
+}
+
+// MARK: ListMemesDisplayLogic
+extension ListMemesViewController: ListMemesDisplayLogic {
+    func displayFetchedMemes(viewModel: ListMemes.FetchMemes.ViewModel) {
+        displayedMemes = viewModel.displayedMemes
+        tableView.reloadData()
     }
 }

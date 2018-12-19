@@ -13,13 +13,12 @@ protocol AddMemeBusinessLogic {
 }
 
 protocol AddMemeDataStore {
-    var memeToEdit: Meme? { get set }
+    // no data passed to AddMeme scene from ListMemes scene
 }
 
 class AddMemeInteractor: AddMemeBusinessLogic, AddMemeDataStore {
     var presenter: AddMemePresentationLogic?
     var memesWorker = MemesWorker(memesStore: MemesMemStore())
-    var memeToEdit: Meme?
 
     // MARK: Create order
 
@@ -29,7 +28,6 @@ class AddMemeInteractor: AddMemeBusinessLogic, AddMemeDataStore {
         let memeToAdd = Meme(id: nil, name: memeFormFields.memeName, url: memeFormFields.memeUrl, image: memeFormFields.memeImage)
         memesWorker.addMeme(memeToAdd: memeToAdd) { [weak self] meme in
             guard let weakSelf = self else { return }
-            weakSelf.memeToEdit = meme
             let response = AddMeme.Response(meme: meme)
             weakSelf.presenter?.presentAddedMeme(response: response)
         }

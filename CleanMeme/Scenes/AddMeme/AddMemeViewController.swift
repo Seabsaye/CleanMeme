@@ -83,8 +83,7 @@ class AddMemeViewController: UIViewController {
 
     // MARK: Error handling
 
-    private func showOrderFailureAlert(title: String, message: String)
-    {
+    private func showOrderFailureAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)

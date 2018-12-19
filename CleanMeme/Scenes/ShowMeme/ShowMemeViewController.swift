@@ -16,9 +16,9 @@ class ShowMemeViewController: UIViewController {
     var interactor: ShowMemeBusinessLogic?
     var router: (NSObject & ShowMemeRoutingLogic & ShowMemeDataPassing)?
 
-    @IBOutlet weak var memeTitle: UILabel!
-    @IBOutlet weak var memeUrl: UILabel!
-    @IBOutlet weak var memeImage: UIImageView!
+    @IBOutlet weak var memeTitleLabel: UILabel!
+    @IBOutlet weak var memeUrlLabel: UILabel!
+    @IBOutlet weak var memeImageView: UIImageView!
 
     // MARK: Object lifecycle
 
@@ -39,6 +39,7 @@ class ShowMemeViewController: UIViewController {
         let interactor = ShowMemeInteractor()
         let presenter = ShowMemePresenter()
         let router = ShowMemeRouter()
+
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -47,14 +48,14 @@ class ShowMemeViewController: UIViewController {
         router.dataStore = interactor
     }
 
-    // MARK: - View lifecycle
+    // MARK: View lifecycle
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getOrder()
     }
 
-    // MARK: - Get order
+    // MARK: Get order
 
     func getOrder() {
         let request = ShowMeme.GetMeme.Request()
@@ -62,11 +63,12 @@ class ShowMemeViewController: UIViewController {
     }
 }
 
+// MARK: ShowMemeDisplayLogic
 extension ShowMemeViewController: ShowMemeDisplayLogic {
     func displayMeme(viewModel: ShowMeme.GetMeme.ViewModel) {
         let displayedMeme = viewModel.displayedMeme
-        memeTitle.text = displayedMeme.name
-        memeUrl.text = displayedMeme.url
-        memeImage.image = displayedMeme.image
+        memeTitleLabel.text = displayedMeme.name
+        memeUrlLabel.text = displayedMeme.url
+        memeImageView.image = displayedMeme.image
     }
 }

@@ -60,15 +60,3 @@ class MemesWorker {
 
 typealias MemesWorkerAddMemeCompletionHandler = (Meme?) -> ()
 typealias MemesWorkerFetchMemeCompletionHandler = ([Meme]) -> ()
-
-enum MemesStoreResult<U> {
-    case Success(result: U)
-    case Failure(error: MemesStoreError)
-}
-
-enum MemesStoreError: Error {
-    case CannotFetch(String)
-    case CannotCreate(String)
-    case CannotUpdate(String)
-    case CannotDelete(String)
-}

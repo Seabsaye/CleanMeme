@@ -47,6 +47,6 @@ class AddMemeRouter: NSObject, AddMemeRoutingLogic, AddMemeDataPassing {
     // MARK: Passing Data
 
     func passDataToListMemes(source: AddMemeDataStore, destination: inout ListMemesDataStore) {
-        // do nothing, handled by storyboard
+        // do nothing, handled by view lifecycle
     }
 }

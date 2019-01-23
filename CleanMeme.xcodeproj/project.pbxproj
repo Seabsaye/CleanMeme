@@ -30,7 +30,7 @@
 		2ADE0AE221C89F8300E97008 /* ShowMemeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADE0AE121C89F8300E97008 /* ShowMemeModels.swift */; };
 		2ADE0AE421C8A0B500E97008 /* ShowMemeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADE0AE321C8A0B500E97008 /* ShowMemeInteractor.swift */; };
 		2ADE0AE621C8A0BC00E97008 /* ShowMemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADE0AE521C8A0BC00E97008 /* ShowMemePresenter.swift */; };
-		2ADE0AE821C8A0C800E97008 /* ShowMemeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADE0AE721C8A0C800E97008 /* ShowMemeRouter.swift */; };
+		9E73AFED21F81F5900E3ED52 /* ShowMemeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E73AFEC21F81F5900E3ED52 /* ShowMemeRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +59,7 @@
 		2ADE0AE121C89F8300E97008 /* ShowMemeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemeModels.swift; sourceTree = "<group>"; };
 		2ADE0AE321C8A0B500E97008 /* ShowMemeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemeInteractor.swift; sourceTree = "<group>"; };
 		2ADE0AE521C8A0BC00E97008 /* ShowMemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemePresenter.swift; sourceTree = "<group>"; };
-		2ADE0AE721C8A0C800E97008 /* ShowMemeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemeRouter.swift; sourceTree = "<group>"; };
+		9E73AFEC21F81F5900E3ED52 /* ShowMemeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemeRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 				2ADE0AE321C8A0B500E97008 /* ShowMemeInteractor.swift */,
 				2ADE0AE121C89F8300E97008 /* ShowMemeModels.swift */,
 				2ADE0AE521C8A0BC00E97008 /* ShowMemePresenter.swift */,
-				2ADE0AE721C8A0C800E97008 /* ShowMemeRouter.swift */,
+				9E73AFEC21F81F5900E3ED52 /* ShowMemeRouter.swift */,
 				2ADE0ADB21C895B800E97008 /* ShowMemeViewController.swift */,
 			);
 			path = ShowMeme;
@@ -259,7 +259,6 @@
 			files = (
 				2ADE0AD821C8849D00E97008 /* ListMemesModels.swift in Sources */,
 				2AB8252321C1CF4800BE0516 /* AddMemeRouter.swift in Sources */,
-				2ADE0AE821C8A0C800E97008 /* ShowMemeRouter.swift in Sources */,
 				2ADE0AC921C83D7B00E97008 /* Meme.swift in Sources */,
 				2ADE0AD621C87DBE00E97008 /* ListMemesInteractor.swift in Sources */,
 				2AB8251F21C1C86500BE0516 /* AddMemeViewController.swift in Sources */,
@@ -275,6 +274,7 @@
 				2ADE0ADA21C8881100E97008 /* ListMemesPresenter.swift in Sources */,
 				2ADE0AE221C89F8300E97008 /* ShowMemeModels.swift in Sources */,
 				2AB8252121C1CE9300BE0516 /* AddMemeInteractor.swift in Sources */,
+				9E73AFED21F81F5900E3ED52 /* ShowMemeRouter.swift in Sources */,
 				2AB8252521C1D01C00BE0516 /* AddMemePresenter.swift in Sources */,
 				2AB8252721C1ECB300BE0516 /* AddMemeModels.swift in Sources */,
 			);
